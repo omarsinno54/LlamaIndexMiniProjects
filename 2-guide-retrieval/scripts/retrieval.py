@@ -68,20 +68,27 @@ class GuideRetrieval:
         return response
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--query', required=True)
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument('--query', required=True)
 
-    args = parser.parse_args()
-    query = args.query
+    # args = parser.parse_args()
+    # query = args.query
 
     guide_retrieval = GuideRetrieval()
 
     url = 'https://steamcommunity.com/sharedfiles/filedetails/?id=2206372652'
 
     guide_retrieval.retrieve_data(url)
-    response = guide_retrieval.query_data(query)
+    
+    a = ''
+    
+    while a != 'stop':
+        query = input('[i] Ask the LLM anything regarding Shogun 2:\n')
 
-    logger.info(response)
+        response = guide_retrieval.query_data(query)
+
+        a = input('[i] Would you like to stop?\n')
+
     # guide_retrieval.clean_data()
 
     # guide_retrieval.embed_data()

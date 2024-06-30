@@ -39,5 +39,8 @@ def load_documents():
 # Querying the LLM
 def query_engine(index, query: str):
 
-    query_engine = index.as_query_engine()
+    query_engine = index.as_query_engine(streaming=True)
+    query_engine.query(query).print_response_stream()
+
+    print('\n')
     return query_engine.query(query)
